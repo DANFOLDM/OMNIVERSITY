@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OMNIVERSITY | Guilds</title>
+    <meta name="description" content="Guild collaboration and profit sharing." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      (function () {
+        const theme = localStorage.getItem("elimucoin-theme") || "light";
+        if (theme === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <div>
+            <div class="brand-title">OMNIVERSITY</div>
+            <div class="brand-sub">Elimu coin</div>
+          </div>
+        </div>
+
+        <nav class="menu">
+          <a class="menu-link" href="index.html">Overview</a>
+          <a class="menu-link" href="index.html#walkthrough">Walkthrough</a>
+          <a class="menu-link" href="dashboard.html">Dashboard</a>
+          <a class="menu-link" href="learn.html">Learn</a>
+          <a class="menu-link" href="sensei.html">AI Sensei</a>
+          <a class="menu-link" href="rewards.html">Rewards</a>
+          <a class="menu-link" href="mpesa.html">M-Pesa</a>
+          <a class="menu-link" href="gomycode.html">GoMyCode</a>
+          <a class="menu-link active" href="guilds.html">Guilds</a>
+          <a class="menu-link" href="jobs.html">Jobs</a>
+          <a class="menu-link" href="governance.html">Governance</a>
+        </nav>
+
+        <div class="sidebar-cta">
+          <a class="btn primary" href="auth.html">Sign Up</a>
+          <a class="btn ghost" href="auth.html">Log In</a>
+        </div>
+
+        <div class="sidebar-foot">
+          <span class="pill mpesa">M-Pesa Ready</span>
+          <span class="pill gomycode">GoMyCode Sync</span>
+        </div>
+      </aside>
+
+      <main class="app-content">
+        <header class="topbar">
+          <div class="search">
+            <input class="input" type="text" placeholder="Search guilds or projects" />
+          </div>
+          <div class="status-bar">
+            <div class="status-pill" data-service="sensei">
+              AI Sensei
+              <span class="status-dot"></span>
+              <span class="status-text">Checking</span>
+            </div>
+            <div class="status-pill" data-service="radar">
+              Opportunity Radar
+              <span class="status-dot"></span>
+              <span class="status-text">Checking</span>
+            </div>
+            <div class="status-pill" data-service="biometric">
+              Biometric
+              <span class="status-dot"></span>
+              <span class="status-text">Checking</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="app-section">
+          <div class="section-head">
+            <div>
+              <h2>Guilds</h2>
+              <p class="muted">Join teams, win contracts, and split profits.</p>
+            </div>
+            <img class="section-icon" src="assets/dao-shield.svg" alt="Guilds" />
+          </div>
+
+          <div class="grid-3">
+            <div class="panel-card reveal">
+              <h3>Web Builders Kenya</h3>
+              <p class="muted">235 members · Treasury 50,100 OMNI</p>
+              <a class="btn ghost" href="jobs.html">Apply</a>
+            </div>
+            <div class="panel-card reveal">
+              <h3>Blockchain Builders Africa</h3>
+              <p class="muted">156 members · Treasury 75,000 OMNI</p>
+              <a class="btn ghost" href="jobs.html">Apply</a>
+            </div>
+            <div class="panel-card reveal">
+              <h3>AI Product Studio</h3>
+              <p class="muted">89 members · Treasury 38,400 OMNI</p>
+              <a class="btn ghost" href="jobs.html">Apply</a>
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-top: 24px;">
+            <div class="panel-card reveal">
+              <h3>Create a Guild</h3>
+              <p class="muted">Stake OMNI, define roles, and start bidding on projects.</p>
+              <div class="form-stack">
+                <input class="input" type="text" placeholder="Guild Name" />
+                <input class="input" type="text" placeholder="Focus (Web, AI, Data)" />
+                <button class="btn primary">Create Guild</button>
+              </div>
+            </div>
+            <div class="panel-card reveal">
+              <h3>Active Guild Projects</h3>
+              <ul class="list">
+                <li>Mobile wallet redesign - 2 weeks</li>
+                <li>AI onboarding bot - 10 days</li>
+                <li>Web3 membership site - 4 weeks</li>
+              </ul>
+              <a class="btn ghost" href="jobs.html">View Jobs</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

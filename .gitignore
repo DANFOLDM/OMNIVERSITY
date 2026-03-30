@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+*.egg-info/
+.venv/
+venv/
+ENV/
+.env
+.env.*
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Africa's Talking runtime state
+integrations/africastalking/data/
+
+# Editors
+.vscode/
+.idea/
+
+# Build output
+/dist/
+/build/
