@@ -3,15 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ELIMUCOIN | Learn</title>
+    <title>OMNIVERSITY | Learn</title>
     <meta name="description" content="Learning hub and course catalog." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      (function () {
+        const theme = localStorage.getItem("elimucoin-theme") || "light";
+        if (theme === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
   </head>
   <body>
     <div class="app-shell">
@@ -19,8 +27,8 @@
         <div class="brand">
           <span class="brand-mark"></span>
           <div>
-            <div class="brand-title">ELIMUCOIN</div>
-            <div class="brand-sub">Omniversity Protocol</div>
+            <div class="brand-title">OMNIVERSITY</div>
+            <div class="brand-sub">Elimu coin</div>
           </div>
         </div>
 

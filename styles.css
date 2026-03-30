@@ -1,7 +1,37 @@
 :root {
+  --font-display: "Syne", var(--font-display);
+  --font-body: "DM Sans", "Manrope", sans-serif;
   --mpesa: #00a651;
   --gomycode: #e31b23;
   --accent: #20d4c6;
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --panel-strong: #f8fafc;
+  --panel-soft: #f1f5f9;
+  --text: #0b0f16;
+  --muted: #475569;
+  --line: rgba(15, 23, 42, 0.1);
+  --shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
+  --shadow-xs: 0 2px 8px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --glass: rgba(15, 23, 42, 0.02);
+  --glass-strong: rgba(15, 23, 42, 0.04);
+  --glass-soft: rgba(15, 23, 42, 0.03);
+  --glass-border: rgba(15, 23, 42, 0.15);
+  --panel-gradient: linear-gradient(160deg, #ffffff, #f8fafc);
+  --sidebar-bg: rgba(255, 255, 255, 0.98);
+  --topbar-bg: rgba(255, 255, 255, 0.92);
+  --page-bg:
+    radial-gradient(900px 600px at 8% -10%, rgba(0, 166, 81, 0.08), transparent 60%),
+    radial-gradient(900px 600px at 92% 0%, rgba(227, 27, 35, 0.06), transparent 60%),
+    radial-gradient(700px 520px at 50% 100%, rgba(32, 212, 198, 0.1), transparent 65%),
+    #f8fafc;
+  --radius-lg: 26px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+}
+
+[data-theme="dark"] {
   --bg: #0b0f16;
   --panel: #131c2b;
   --panel-strong: #172338;
@@ -10,9 +40,20 @@
   --muted: #97a6ba;
   --line: rgba(255, 255, 255, 0.08);
   --shadow: 0 30px 80px rgba(4, 8, 20, 0.7);
-  --radius-lg: 26px;
-  --radius-md: 18px;
-  --radius-sm: 12px;
+  --shadow-xs: 0 6px 16px rgba(4, 8, 20, 0.55);
+  --shadow-soft: 0 18px 40px rgba(4, 8, 20, 0.65);
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-strong: rgba(255, 255, 255, 0.06);
+  --glass-soft: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --panel-gradient: linear-gradient(160deg, rgba(24, 33, 52, 0.96), rgba(13, 20, 34, 0.96));
+  --sidebar-bg: rgba(10, 15, 26, 0.95);
+  --topbar-bg: rgba(16, 23, 36, 0.8);
+  --page-bg:
+    radial-gradient(900px 600px at 8% -10%, rgba(0, 166, 81, 0.25), transparent 60%),
+    radial-gradient(900px 600px at 92% 0%, rgba(227, 27, 35, 0.18), transparent 60%),
+    radial-gradient(700px 520px at 50% 100%, rgba(32, 212, 198, 0.2), transparent 65%),
+    #0b0f16;
 }
 
 * {
@@ -26,15 +67,12 @@ html {
 }
 
 body {
-  font-family: "Manrope", "Space Grotesk", sans-serif;
+  font-family: var(--font-body);
   color: var(--text);
-  background:
-    radial-gradient(900px 600px at 8% -10%, rgba(0, 166, 81, 0.25), transparent 60%),
-    radial-gradient(900px 600px at 92% 0%, rgba(227, 27, 35, 0.18), transparent 60%),
-    radial-gradient(700px 520px at 50% 100%, rgba(32, 212, 198, 0.2), transparent 65%),
-    var(--bg);
+  background: var(--page-bg);
   min-height: 100vh;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 14px;
 }
 
 a {
@@ -76,7 +114,7 @@ a {
 
 .landing-links a:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--glass-strong);
 }
 
 .landing-actions {
@@ -93,7 +131,7 @@ a {
 }
 
 .hero-copy h1 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2.4rem, 3.6vw, 3.6rem);
   line-height: 1.05;
   margin: 12px 0 18px;
@@ -215,7 +253,7 @@ a {
   align-self: start;
   height: 100vh;
   padding: 28px 24px;
-  background: rgba(10, 15, 26, 0.95);
+  background: var(--sidebar-bg);
   border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
@@ -238,7 +276,7 @@ a {
 }
 
 .brand-title {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: 0.08em;
 }
@@ -265,7 +303,7 @@ a {
 
 .menu-link:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass-soft);
 }
 
 .menu-link.active {
@@ -295,7 +333,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--glass);
 }
 
 .pill.mpesa {
@@ -323,7 +361,7 @@ a {
   flex-wrap: wrap;
   padding: 16px 20px;
   border-radius: var(--radius-lg);
-  background: rgba(16, 23, 36, 0.8);
+  background: var(--topbar-bg);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
@@ -338,7 +376,7 @@ a {
   padding: 12px 14px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--glass);
   color: var(--text);
   font-size: 0.95rem;
   font-family: inherit;
@@ -366,7 +404,7 @@ a {
   gap: 10px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--glass);
   border: 1px solid var(--line);
   font-weight: 700;
   font-size: 0.8rem;
@@ -394,7 +432,7 @@ a {
 
 .app-section {
   position: relative;
-  background: linear-gradient(160deg, rgba(24, 33, 52, 0.96), rgba(13, 20, 34, 0.96));
+  background: var(--panel-gradient);
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
   padding: 32px;
@@ -421,7 +459,7 @@ a {
 }
 
 .section-head h2 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.6rem, 2.2vw, 2.4rem);
   margin-bottom: 6px;
 }
@@ -462,7 +500,7 @@ a {
 }
 
 .hero-app h1 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2.2rem, 3.2vw, 3.4rem);
   line-height: 1.1;
   margin-bottom: 16px;
@@ -482,7 +520,7 @@ a {
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--glass);
   border-radius: var(--radius-md);
   border: 1px solid var(--line);
   padding: 14px 16px;
@@ -578,7 +616,7 @@ a {
   width: 70px;
   height: 70px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass-soft);
   padding: 8px;
 }
 
@@ -612,7 +650,7 @@ a {
 .card-illustration {
   width: 110px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass-soft);
   padding: 6px;
 }
 
@@ -688,7 +726,7 @@ a {
 
 .btn.ghost:hover {
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--glass-border);
 }
 
 .reveal {
@@ -816,5 +854,283 @@ a {
     animation: none;
     transition: none;
     scroll-behavior: auto;
+  }
+}
+
+/* ══ APP UI TUNING (Dashboard-style + compact sizing) ══ */
+body:not(.landing) {
+  --glass-content-bg: rgba(255, 255, 255, 0.52);
+  --glass-content-border: rgba(15, 23, 42, 0.08);
+  --glass-content-blur: 18px;
+  --glass-nav-bg: rgba(255, 255, 255, 0.68);
+  --glass-nav-border: rgba(15, 23, 42, 0.12);
+  --glass-nav-blur: 10px;
+  --glass-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  background-image:
+    linear-gradient(rgba(248, 250, 252, 0.4), rgba(248, 250, 252, 0.4)),
+    url("assets/education-economy.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #f8fafc;
+}
+
+body:not(.landing)::before {
+  content: none;
+}
+
+[data-theme="dark"] body:not(.landing) {
+  --glass-content-bg: rgba(8, 12, 20, 0.62);
+  --glass-content-border: rgba(255, 255, 255, 0.1);
+  --glass-nav-bg: rgba(10, 14, 22, 0.72);
+  --glass-nav-border: rgba(255, 255, 255, 0.12);
+  --glass-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  background-image:
+    linear-gradient(rgba(10, 14, 20, 0.55), rgba(10, 14, 20, 0.65)),
+    url("assets/education-economy.jpg");
+  background-color: #0b0f16;
+}
+
+body:not(.landing) .app-section,
+body:not(.landing) .panel-card,
+body:not(.landing) .panel,
+body:not(.landing) .control-card,
+body:not(.landing) .course-card,
+body:not(.landing) .course-item,
+body:not(.landing) .wallet-card,
+body:not(.landing) .activity-item,
+body:not(.landing) .guild-card,
+body:not(.landing) .mpesa-row,
+body:not(.landing) .sensei-cta,
+body:not(.landing) .cert-badge,
+body:not(.landing) .status-pill,
+body:not(.landing) .topbar,
+body:not(.landing) .output {
+  background: var(--glass-content-bg);
+  border-color: var(--glass-content-border);
+  backdrop-filter: blur(var(--glass-content-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--glass-content-blur)) saturate(160%);
+  text-shadow: var(--glass-text-shadow);
+}
+
+body:not(.landing) .sidebar {
+  background: var(--glass-nav-bg);
+  border-color: var(--glass-nav-border);
+  backdrop-filter: blur(var(--glass-nav-blur)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--glass-nav-blur)) saturate(150%);
+}
+
+body:not(.landing) h1,
+body:not(.landing) h2,
+body:not(.landing) h3,
+body:not(.landing) h4 {
+  font-family: var(--font-display);
+}
+
+body:not(.landing) h3 {
+  font-size: 0.95rem;
+}
+
+body:not(.landing) .app-shell {
+  grid-template-columns: 240px minmax(0, 1fr);
+}
+
+body:not(.landing) .sidebar {
+  padding: 20px 18px;
+  gap: 16px;
+  box-shadow: var(--shadow-xs);
+}
+
+body:not(.landing) .brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+}
+
+body:not(.landing) .brand-title {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+}
+
+body:not(.landing) .brand-sub {
+  font-size: 0.72rem;
+}
+
+body:not(.landing) .menu {
+  gap: 6px;
+}
+
+body:not(.landing) .menu-link {
+  font-size: 0.82rem;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+body:not(.landing) .menu-link.active {
+  color: var(--mpesa);
+  background: rgba(0, 166, 81, 0.12);
+  border-color: rgba(0, 166, 81, 0.22);
+  box-shadow: none;
+}
+
+body:not(.landing) .sidebar-cta {
+  gap: 10px;
+}
+
+body:not(.landing) .sidebar-cta .btn {
+  padding: 8px 14px;
+  font-size: 0.78rem;
+}
+
+body:not(.landing) .pill {
+  font-size: 0.6rem;
+  padding: 4px 9px;
+}
+
+body:not(.landing) .app-content {
+  padding: 24px 28px 60px;
+  gap: 24px;
+}
+
+body:not(.landing) .topbar {
+  position: sticky;
+  top: 16px;
+  z-index: 10;
+  padding: 10px 14px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-xs);
+}
+
+body:not(.landing) .input {
+  padding: 9px 12px;
+  font-size: 0.85rem;
+}
+
+body:not(.landing) .status-pill {
+  font-size: 0.68rem;
+  padding: 4px 10px;
+}
+
+body:not(.landing) .status-dot {
+  width: 7px;
+  height: 7px;
+}
+
+body:not(.landing) .app-section {
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+body:not(.landing) .section-head {
+  margin-bottom: 18px;
+}
+
+body:not(.landing) .section-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.7rem);
+}
+
+body:not(.landing) .section-icon {
+  width: 56px;
+  height: 56px;
+}
+
+body:not(.landing) .hero-tag {
+  font-size: 0.65rem;
+  padding: 4px 10px;
+}
+
+body:not(.landing) .hero-app h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+}
+
+body:not(.landing) .hero-actions {
+  margin: 12px 0 18px;
+}
+
+body:not(.landing) .hero-stats {
+  gap: 10px;
+}
+
+body:not(.landing) .grid-4,
+body:not(.landing) .grid-3,
+body:not(.landing) .grid-2 {
+  gap: 12px;
+}
+
+body:not(.landing) .panel-card {
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-xs);
+}
+
+body:not(.landing) .panel-title {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+}
+
+body:not(.landing) .panel-value {
+  font-size: 1.15rem;
+}
+
+body:not(.landing) .panel-meta {
+  font-size: 0.78rem;
+}
+
+body:not(.landing) .course-card {
+  padding: 14px;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  box-shadow: var(--shadow-xs);
+}
+
+body:not(.landing) .course-card img {
+  width: 56px;
+  height: 56px;
+}
+
+body:not(.landing) .control-card {
+  padding: 18px;
+  box-shadow: var(--shadow-xs);
+}
+
+body:not(.landing) .output,
+body:not(.landing) .list,
+body:not(.landing) .card-head p {
+  font-size: 0.78rem;
+}
+
+body:not(.landing) .btn {
+  padding: 9px 16px;
+  font-size: 0.78rem;
+}
+
+body:not(.landing) .btn.primary {
+  box-shadow: 0 10px 20px rgba(0, 166, 81, 0.22);
+}
+
+@media (max-width: 1024px) {
+  body:not(.landing) .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  body:not(.landing) .sidebar {
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 720px) {
+  body:not(.landing) .app-content {
+    padding: 18px 18px 48px;
+  }
+
+  body:not(.landing) .topbar {
+    top: 8px;
   }
 }

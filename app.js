@@ -1,6 +1,44 @@
 const config = window.ELIMUCOIN_CONFIG || {};
 const requestTimeoutMs = Number(config.requestTimeoutMs) || 5000;
 
+const themeStorageKey = "elimucoin-theme";
+const themeToggles = document.querySelectorAll(".theme-toggle");
+
+const setThemeToggleLabel = (theme) => {
+  const isDark = theme === "dark";
+  themeToggles.forEach(toggle => {
+    const icon = toggle.querySelector(".theme-toggle-icon");
+    const text = toggle.querySelector(".theme-toggle-text");
+    if (icon) icon.textContent = isDark ? "🌞" : "🌙";
+    if (text) text.textContent = isDark ? "Light Mode" : "Dark Mode";
+    toggle.setAttribute("aria-pressed", String(isDark));
+  });
+};
+
+const applyTheme = (theme) => {
+  const resolved = theme === "dark" ? "dark" : "light";
+  if (resolved === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+  }
+  setThemeToggleLabel(resolved);
+};
+
+const storedTheme = localStorage.getItem(themeStorageKey);
+// Default to light if no preference or if we want to ensure it's white
+const initialTheme = storedTheme === "dark" ? "dark" : "light";
+applyTheme(initialTheme);
+
+themeToggles.forEach(toggle => {
+  toggle.addEventListener("click", () => {
+    const isCurrentlyDark = document.documentElement.getAttribute("data-theme") === "dark";
+    const nextTheme = isCurrentlyDark ? "light" : "dark";
+    applyTheme(nextTheme);
+    localStorage.setItem(themeStorageKey, nextTheme);
+  });
+});
+
 const normalizeBase = (base) => (base || "").replace(/\/$/, "");
 const fallbackBase = normalizeBase(config.fallbackBase);
 const useDemoServer = Boolean(config.useDemoServer);
@@ -100,6 +138,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 const revealItems = document.querySelectorAll(".reveal");
 const counterItems = document.querySelectorAll("[data-counter]");
+const isLanding = document.body && document.body.classList.contains("landing");
 const menuLinks = document.querySelectorAll(".menu-link");
 const menuSections = Array.from(menuLinks)
   .map((link) => link.getAttribute("href"))
@@ -135,37 +174,39 @@ const animateCounter = (el) => {
   requestAnimationFrame(tick);
 };
 
-if (prefersReducedMotion) {
-  revealItems.forEach((el) => el.classList.add("is-visible"));
-  setCounters();
-} else {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
+if (!isLanding) {
+  if (prefersReducedMotion) {
+    revealItems.forEach((el) => el.classList.add("is-visible"));
+    setCounters();
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-  revealItems.forEach((el) => observer.observe(el));
+    revealItems.forEach((el) => observer.observe(el));
 
-  const counterObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.6 }
-  );
+    const counterObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
 
-  counterItems.forEach((el) => counterObserver.observe(el));
+    counterItems.forEach((el) => counterObserver.observe(el));
+  }
 }
 
 const updateActiveMenu = () => {
