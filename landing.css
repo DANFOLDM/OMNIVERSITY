@@ -510,14 +510,21 @@ body.landing {
 }
 
 .lfooter {
-  padding: 40px 6vw 60px;
+  position: relative;
+  padding: 60px 6vw 80px;
+  overflow: hidden;
 }
 
 .lfooter-inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 18px;
-  border-top: 1px solid var(--landing-border-soft);
-  padding-top: 24px;
+  border: 1px solid var(--landing-border-soft);
+  border-radius: 24px;
+  padding: 28px;
+  background: var(--landing-surface-soft);
+  box-shadow: var(--landing-shadow);
 }
 
 .lfooter-brand {
@@ -557,6 +564,37 @@ body.landing {
   font-size: 0.85rem;
 }
 
+.lfooter::before {
+  content: "";
+  position: absolute;
+  right: 5%;
+  bottom: -10%;
+  width: 520px;
+  height: 520px;
+  background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20800%20800%27%3E%3Cpath%20fill%3D%27%23ffffff%27%20d%3D%27M410%2040%20L360%2070%20L330%20120%20L300%20160%20L260%20200%20L220%20260%20L210%20320%20L230%20380%20L260%20420%20L270%20470%20L260%20520%20L230%20580%20L210%20640%20L240%20700%20L300%20740%20L360%20760%20L420%20730%20L470%20680%20L500%20620%20L530%20560%20L560%20510%20L590%20460%20L610%20410%20L600%20360%20L570%20300%20L540%20260%20L520%20220%20L490%20180%20L460%20130%20L440%2080%20Z%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .lfooter::before {
+  opacity: 0.12;
+}
+
+@media (max-width: 720px) {
+  .lfooter-inner {
+    padding: 22px;
+  }
+
+  .lfooter::before {
+    width: 360px;
+    height: 360px;
+    right: -10%;
+    bottom: -20%;
+  }
+}
+
 @keyframes lfloat {
   0%,
   100% {
@@ -579,10 +617,13 @@ body.landing {
 @media (max-width: 1000px) {
   .lhero-inner {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
   .lhero {
     padding-top: 60px;
+    padding-bottom: 32px;
+    min-height: auto;
   }
 
   .lhero-chips {
@@ -593,6 +634,11 @@ body.landing {
 
   .lchip {
     position: static;
+    width: min(360px, 100%);
+  }
+
+  .lhero-bg-img {
+    object-position: center top;
   }
 }
 
@@ -604,6 +650,18 @@ body.landing {
 
   .lnav-right {
     flex-wrap: wrap;
+  }
+
+  .lhero {
+    padding: 48px 6vw 24px;
+  }
+
+  .lhero-h1 {
+    font-size: clamp(2rem, 8.5vw, 2.9rem);
+  }
+
+  .lhero-sub {
+    font-size: 0.95rem;
   }
 
   .lhero-actions {
